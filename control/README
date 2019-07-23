@@ -1,0 +1,20 @@
+README file for LTRT_test_mode
+August 2013
+
+LTRT_test_mode is the default runtime code for LTRT in testing mode.
+
+
+1) Upload the default sketch to Arduino (AnalogueCapture)
+
+2) As root, chmod /dev/ttyACM0 to 777
+
+Open 3 xterms
+
+3) Start the capture:
+$ ./analogue_capture.sh
+
+4) Smooth the data every 5000 lines:
+$ ./smooth.sh 5000
+
+5) Plot out direct from the serial port (edit plot.gp with yrange):
+$ ./plot_analogue_capture.sh

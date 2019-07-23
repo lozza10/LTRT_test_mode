@@ -1,0 +1,51 @@
+/*
+  AnalogueCapture
+  Reads a voltage input on pin 0 (0-5v), 
+  converts it to digital (0-1023), 
+  and prints output to the serial monitor.
+  
+  10 bit ADC
+  Sampling rate: ~1kHz
+ 
+  LT April 2013
+ */
+
+
+int ampl_led = 11;
+int stat_led = 13;
+double time;
+
+/* Setup */
+void setup() {
+  
+  // Initialise serial communication
+  Serial.begin(115200);
+
+  // Initialise output pins
+  pinMode(stat_led, OUTPUT);
+  pinMode(ampl_led, OUTPUT);
+  
+  // Starting up
+  for (int i=0; i<3; i++) {
+    digitalWrite(stat_led, HIGH);
+    delay(10);
+    digitalWrite(stat_led, LOW);
+    delay(10); 
+  }
+  
+  // Status: reading data
+  digitalWrite(ampl_led, HIGH);
+  
+}
+
+
+/* Main loop */
+void loop() {
+  
+  // Read and print to serial port
+  time=millis();
+  Serial.print(time);
+  Serial.print(" ");
+  Serial.println(analogRead(0));  
+  
+}
